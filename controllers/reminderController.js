@@ -12,6 +12,7 @@ const setReminder = async (req, res) => {
     }
 
     const now = new Date()
+<<<<<<< HEAD
     // Check if sale start exists
     console.log(req.body)
     console.log(product)
@@ -30,6 +31,10 @@ const setReminder = async (req, res) => {
         message: "Sale already started or ended ❌"
       })
 
+=======
+    if (!product.saleStart || new Date(product.saleStart) <= now) {
+      return res.status(400).json({ message: "This product does not have an upcoming sale start time to remind you about." })
+>>>>>>> 71ac0da2b8946ba8d4b2dee3359a13e9e9132c86
     }
 
     // Validate SMS requirements if SMS is selected

@@ -15,12 +15,17 @@ const run = async () => {
 
     let admin = await User.findOne({ email: adminEmail })
     if (!admin) {
+<<<<<<< HEAD
       admin = await User.create({
         name: "Admin",
         email: adminEmail,
         password: adminPassword,
         role: "admin"
         })
+=======
+      const hashed = await bcrypt.hash(adminPassword, 10)
+      admin = await User.create({ name: "Admin", email: adminEmail, password: hashed, role: "admin" })
+>>>>>>> 71ac0da2b8946ba8d4b2dee3359a13e9e9132c86
       console.log("Admin user created:", adminEmail)
     } else {
       console.log("Admin user already exists:", adminEmail)
@@ -35,7 +40,11 @@ const run = async () => {
         stock: 100,
         salePrice: 4.99,
         saleStock: 50,
+<<<<<<< HEAD
         saleStart: new Date(Date.now() + 30 * 60 * 1000),
+=======
+        saleStart: new Date(Date.now() - 60 * 60 * 1000),
+>>>>>>> 71ac0da2b8946ba8d4b2dee3359a13e9e9132c86
         saleEnd: new Date(Date.now() + 24 * 60 * 60 * 1000)
       })
       console.log("Sample product created")
