@@ -1,6 +1,6 @@
 const Reminder = require("../models/Reminder")
 const Product = require("../models/Product")
-const { sendReminderEmail, sendSMS, sendReminderSMS } = require("../utils/notificationService")
+const { sendReminderEmail, sendReminderSMS } = require("../utils/notificationService")
 
 const setReminder = async (req, res) => {
   try {
@@ -12,11 +12,8 @@ const setReminder = async (req, res) => {
     }
 
     const now = new Date()
-<<<<<<< HEAD
+
     // Check if sale start exists
-    console.log(req.body)
-    console.log(product)
-    console.log(product.saleStart)
     if (!product.saleStart) {
       return res.status(400).json({
         message: "Sale start time not available ❌"
@@ -30,12 +27,7 @@ const setReminder = async (req, res) => {
       return res.status(400).json({
         message: "Sale already started or ended ❌"
       })
-
-=======
-    if (!product.saleStart || new Date(product.saleStart) <= now) {
-      return res.status(400).json({ message: "This product does not have an upcoming sale start time to remind you about." })
->>>>>>> 71ac0da2b8946ba8d4b2dee3359a13e9e9132c86
-    }
+    } // ✅ Idi missing undi
 
     // Validate SMS requirements if SMS is selected
     if (reminderType === "sms" || reminderType === "both") {
@@ -60,10 +52,10 @@ const setReminder = async (req, res) => {
       message: "Reminder set successfully ✅",
       reminder
     })
-  } catch (error) {
+  } catch (error) { // ✅ setReminder function ki catch idi
     res.status(500).json({ error: error.message })
   }
-}
+} // ✅ setReminder function closing brace
 
 const getReminders = async (req, res) => {
   try {
@@ -142,7 +134,7 @@ const processReminders = async () => {
   } catch (error) {
     console.error("Error processing reminders:", error)
   }
-}
+} // ✅ processReminders closing brace
 
 module.exports = {
   setReminder,
