@@ -44,13 +44,10 @@ app.use(generalLimiter)
 
 connectDB()
 initRedis()
-<<<<<<< HEAD
 app.use((req, res, next) => {
   console.log("Request:", req.method, req.url);
   next();
 });
-=======
->>>>>>> 71ac0da2b8946ba8d4b2dee3359a13e9e9132c86
 
 // Socket.IO connection handling
 io.on("connection", (socket) => {
